@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Confirmation
+{% endblock%}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center">
+	<div class="card confirmation-card shadow-sm text-center p-4 my-5" style="max-width:720px; width:100%;">
+		<div class="mb-3">
+			<div class="confirmation-icon bg-primary text-white mx-auto">i</div>
+		</div>
+
+		<h2 class="card-title mb-1">Request Received</h2>
+		<p class="lead text-muted mb-2">We have received your request. Our representative will call you shortly.</p>
+
+		{% if booking %}
+		<ul class="list-group list-group-flush text-start mb-3">
+			<li class="list-group-item"><strong>Patient:</strong> {{ booking.p_name }}</li>
+			<li class="list-group-item"><strong>Contact:</strong> {{ booking.p_phone }}</li>
+			<li class="list-group-item"><strong>Email:</strong> {{ booking.p_email }}</li>
+			<li class="list-group-item"><strong>Doctor:</strong> {{ booking.doc_name }}</li>
+			<li class="list-group-item"><strong>Date:</strong> {{ booking.booking_date }}</li>
+			
+		</ul>
+		{% elif patient_name or doctor_name or booking_datetime or reference %}
+		<ul class="list-group list-group-flush text-start mb-3">
+			{% if patient_name %}<li class="list-group-item"><strong>Patient:</strong> {{ patient_name }}</li>{% endif %}
+			{% if contact %}<li class="list-group-item"><strong>Contact:</strong> {{ contact }}</li>{% endif %}
+			{% if email %}<li class="list-group-item"><strong>Email:</strong> {{ email }}</li>{% endif %}
+			{% if doctor_name %}<li class="list-group-item"><strong>Doctor:</strong> {{ doctor_name }}</li>{% endif %}
+			{% if booking_datetime %}<li class="list-group-item"><strong>Date:</strong> {{ booking_datetime }}</li>{% endif %}
+		</ul>
+		{% else %}
+		<div class="mb-3 text-muted">No further details are available at this time.</div>
+		{% endif %}
+
+		<div class="d-flex justify-content-center gap-2">
+			<a href="{% url 'home' %}" class="btn btn-primary">Back to Home</a>
+			<button class="btn btn-light" onclick="window.print()">Print</button>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
