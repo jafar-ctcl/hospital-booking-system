@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=5">
+
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--bg);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .content {
+            flex: 1;
+            padding-bottom: 80px;
+            /* 🔥 footer spacing fix */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">Clinic Care Hospital</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'doctors' %}">Doctors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'booking' %}">Bookings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'department' %}">Department</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4 content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer py-5">
+        <div class="container">
+            <div class="footer-card w-100 p-4">
+                <div class="row align-items-start">
+                    <div class="col-md-4 mb-3">
+                        <h5 class="mb-2">Clinic Care Hospital</h5>
+                        <p class="small text-muted mb-0">Compassionate, patient-centred healthcare with modern
+                            facilities and experienced staff.</p>
+                    </div>
+
+                    <div class="col-md-2 mb-3">
+                        <h6 class="mb-2">Quick Links</h6>
+                        <ul class="list-unstyled small mb-0">
+                            <li><a href="{% url 'home' %}">Home</a></li>
+                            <li><a href="{% url 'about' %}">About</a></li>
+                            <li><a href="{% url 'doctors' %}">Doctors</a></li>
+                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <h6 class="mb-2">Contact</h6>
+                        <p class="small mb-1">123 Main Street, Your City</p>
+                        <p class="small mb-1">Phone: +1 555 123 4567</p>
+                        <p class="small">Email: info@cliniccare.example</p>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <h6 class="mb-2">Opening Hours</h6>
+                        <p class="small mb-0">Mon - Fri: 8:00 AM - 6:00 PM</p>
+                        <p class="small">Sat: 9:00 AM - 1:00 PM</p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom text-center py-3 mt-3">
+                    <small class="text-muted">© 2025 Clinic Care Hospital. All rights reserved.</small>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
