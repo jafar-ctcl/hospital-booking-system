@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+about
+{% endblock%}
+
+{% block content %}
+<div class="py-4">
+	<div class="row g-4 align-items-center">
+		<div class="col-md-6">
+			<h1 class="h3">About Clinic Care Hospital</h1>
+			<p class="text-muted">Clinic Care Hospital has been providing compassionate, high-quality healthcare to our
+				community for over 20 years. We combine experienced medical staff with modern facilities to offer a
+				broad range of services.</p>
+
+			<h5 class="mt-3">Our Mission</h5>
+			<p class="small text-muted">To deliver patient-centred care with integrity, professionalism, and respect.
+			</p>
+
+			<h5 class="mt-3">Services</h5>
+			<ul class="list-unstyled small text-muted">
+				<li>• Outpatient consultations</li>
+				<li>• Specialist clinics</li>
+				<li>• Diagnostic imaging</li>
+				<li>• Emergency care</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6">
+			<div class="card border-0">
+				<img src="{% static 'images/sample2.jpg' %}" class="card-img-top about-img" alt="Hospital">
+				<div class="card-body">
+					<h5 class="card-title">Why choose us?</h5>
+					<p class="card-text small text-muted">Experienced doctors, friendly staff, and a focus on safety and
+						comfort for every patient.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
